@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'SpotifyApp';
+
+
+  // Temporaire
+  connected = true;
+  pathString = ''
+
+  constructor(private location: Location) { 
+      this.pathString = location.path();
+  }
+
 }

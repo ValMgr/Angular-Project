@@ -1,0 +1,44 @@
+:host {
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a{
+    color: white;
+    text-decoration: none;
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .flex{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+
+
+  .toolbar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    box-shadow: 0 0.25rem 1rem #28a74680;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
