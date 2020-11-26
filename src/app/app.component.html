@@ -7,10 +7,10 @@
   <h2>DAWIN's Spotify Stats</h2>
 </div>
 <div class="spacing" style="height:15vh;"></div>
-<div *ngIf="connected == true && this.pathString == ''" class="container">
+<app-menu></app-menu>
+<div *ngIf="pathString == ''" class="container">
   <div class="flex">
-    <a href="/artist">Favorites Artist</a>
-    <a href="/track">Favorites Track</a>
+    <app-auth></app-auth>
   </div>
 </div>
 <router-outlet></router-outlet>

@@ -8,10 +8,14 @@ import {Observable} from 'rxjs';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  constructor(private spotify: SpotifyService) { }
-  authUrl = this.spotify.getAuthUrl();
+  connected = false;
+  authUrl = '';
+  constructor(private spotify: SpotifyService) {
+    this.authUrl = spotify.getAuthUrl();
+  }
 
   ngOnInit(): void {
+    this.spotify.sharedConnected.subscribe(connected => this.connected = connected);
   }
 
 

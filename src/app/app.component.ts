@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Location } from '@angular/common';
+import {SpotifyService} from './spotify.service';
 
 
 @Component({
@@ -8,13 +9,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-
   // Temporaire
-  connected = true;
-  pathString = ''
+  pathString = '';
 
-  constructor(private location: Location) { 
+  constructor(private location: Location, spotify: SpotifyService) {
       this.pathString = location.path();
   }
 

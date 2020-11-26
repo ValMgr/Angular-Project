@@ -9,7 +9,9 @@ import {SpotifyService} from '../spotify.service';
 })
 export class CallbackComponent implements OnInit {
   code: any;
+  token: any;
   topArtist: any;
+  connected = false;
 
   constructor(private activatedRoute: ActivatedRoute, private spotify: SpotifyService) {
     this.activatedRoute.queryParams.subscribe(paramsId => {
@@ -18,11 +20,8 @@ export class CallbackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.spotify.getToken(this.code).subscribe(data => {
-      this.spotify.getTopArtist(data.access_token).subscribe(topArtistData => {
-        this.topArtist = topArtistData;
-      });
-    });
+    this.spotify.sharedConnected.subscribe(connected => this.connected = connected);
+    this.spotify.setConnected(true);
   }
 
 }

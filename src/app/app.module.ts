@@ -8,6 +8,8 @@ import { TrackTopComponent } from './track-top/track-top.component';
 import {AuthComponent} from './auth/auth.component';
 import {CallbackComponent} from './callback/callback.component';
 import {HttpClientModule} from '@angular/common/http';
+import { MenuComponent } from './menu/menu.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import {HttpClientModule} from '@angular/common/http';
     ArtistTopComponent,
     TrackTopComponent,
     AuthComponent,
-    CallbackComponent
+    CallbackComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

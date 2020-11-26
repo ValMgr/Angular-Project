@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 
 const authorizeOptions = {
@@ -34,6 +34,8 @@ const topArtistOptions = {
 })
 export class SpotifyService {
   constructor(private http: HttpClient) {}
+  private connected = new BehaviorSubject<boolean>(false);
+  sharedConnected = this.connected.asObservable();
 
   getAuthUrl(): string{
     return authorizeOptions.url + '\?' + authorizeOptions.params.toString();
@@ -48,6 +50,9 @@ export class SpotifyService {
     console.log(token);
     topArtistOptions.headers.Authorization = 'Bearer ' + token;
     return this.http.get(topArtistOptions.url, {headers: topArtistOptions.headers, responseType: 'json'});
+  }
+  setConnected(connected: boolean): void{
+    this.connected.next(connected);
   }
 }
 
