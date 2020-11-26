@@ -21,7 +21,7 @@ export class CallbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.spotify.sharedConnected.subscribe(connected => this.connected = connected);
-    this.spotify.setConnected(true);
+    this.spotify.getToken(this.code).subscribe(token => this.token = token.access_token);
   }
 
 }
