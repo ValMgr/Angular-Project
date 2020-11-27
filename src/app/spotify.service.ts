@@ -9,7 +9,7 @@ const authorizeOptions = {
     .set('client_id', '0a405b349c54473d9511630f1faf4c56')
     .set('response_type', 'code')
     .set('redirect_uri', 'http://localhost:4200/callback/')
-    .set('scopes', 'user-read-private user-top-read user-read-email')
+    .set('scope', 'user-top-read')
 };
 
 const tokenOptions = {
