@@ -23,8 +23,12 @@ export class CallbackComponent implements OnInit {
     this.spotify.getToken(this.code).subscribe(token => {
       this.token = token.access_token;
       sessionStorage['token'] = token.access_token;
-      this.router.navigate(['./'])
+      //this.router.navigate(['./'])
     });
+
+    this.spotify.getTopArtist(this.token).subscribe(data =>{
+      console.log(data)
+    })
   }
 
 }

@@ -11,7 +11,6 @@ export class ArtistTopComponent implements OnInit {
   data;
 
   constructor(private spotify: SpotifyService) {
-    this.data = spotify.getTopArtist(sessionStorage['token']);
   }
 
   artist = {
@@ -20,7 +19,9 @@ export class ArtistTopComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data.subscribe())
+    this.spotify.getTopArtist(sessionStorage['token']).subscribe(data =>{
+      console.log(data)
+    })
   }
 
 }
