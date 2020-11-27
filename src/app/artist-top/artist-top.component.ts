@@ -12,13 +12,15 @@ export class ArtistTopComponent implements OnInit {
   }
 
   artist = {
-    name: "John Doe",
-    image: "https://i.scdn.co/image/d32577a62624c8d348fede3052fca8c3dd9707ae",
+    name: " ",
+    image: "",
   }
 
   ngOnInit(): void {
     this.spotify.getTopArtist(sessionStorage['token']).subscribe(data =>{
-      console.log(data)
+      console.log(data.items[0])
+      this.artist.name = data.items[0].name
+      this.artist.image = data.items[0].images[0].url
     })
   }
 

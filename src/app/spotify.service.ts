@@ -29,6 +29,15 @@ const topArtistOptions = {
   },
 };
 
+const topTrackOptions = {
+  url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=1&offset=0',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': '',
+  },
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -44,8 +53,12 @@ export class SpotifyService {
     return this.http.post(tokenOptions.url, body, {headers: tokenOptions.headers, responseType: 'json'});
   }
 
+  getTopTrack(token: string): Observable<any>{
+    topTrackOptions.headers.Authorization = 'Bearer ' + token;
+    return this.http.get(topTrackOptions.url, {headers: topTrackOptions.headers, responseType: 'json'});
+  }
+
   getTopArtist(token: string): Observable<any>{
-    console.log(token);
     topArtistOptions.headers.Authorization = 'Bearer ' + token;
     return this.http.get(topArtistOptions.url, {headers: topArtistOptions.headers, responseType: 'json'});
   }

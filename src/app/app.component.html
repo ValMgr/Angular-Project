@@ -10,8 +10,8 @@
 
 <div *ngIf="pathString == ''" class="container">
   <div class="flex">
-    <app-menu></app-menu>
-    <app-auth></app-auth>
+    <app-menu *ngIf="connected == true"></app-menu>
+    <app-auth *ngIf="connected == false"></app-auth>
   </div>
 </div>
 <router-outlet></router-outlet>

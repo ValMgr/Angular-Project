@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SpotifyService} from '../spotify.service';
+
 
 @Component({
   selector: 'app-track-top',
@@ -6,15 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./track-top.component.scss']
 })
 export class TrackTopComponent implements OnInit {
+  constructor(private spotify: SpotifyService){
 
-  constructor() { }
+   }
 
   track = {
-    name: "13 Block - Sablier",
-    cover: "https://i.scdn.co/image/ab67616d00001e023c64c9c5faee7ffbcd8ec1f5",
+    name: "",
+    cover: "",
   }
 
   ngOnInit(): void {
+    this.spotify.getTopTrack(sessionStorage['token']).subscribe(data =>{
+      console.log(data.items[0])
+      this.track.name = data.items[0].name
+      this.track.cover = data.items[0].album.images[0].url
+    })
   }
 
 }

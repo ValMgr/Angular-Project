@@ -14,6 +14,12 @@ export class AppComponent{
 
   constructor(private location: Location) {
       this.pathString = location.path();
+      if(sessionStorage['token'] == undefined){
+        this.connected = false;
+      }
+      else{
+        this.connected = true;
+      }
   }
 
   ngOnInit(): void {
