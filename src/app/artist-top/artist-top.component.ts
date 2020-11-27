@@ -8,8 +8,6 @@ import {SpotifyService} from '../spotify.service';
   styleUrls: ['./artist-top.component.scss']
 })
 export class ArtistTopComponent implements OnInit {
-  data;
-
   constructor(private spotify: SpotifyService) {
   }
 
