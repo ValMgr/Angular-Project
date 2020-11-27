@@ -1,4 +1,5 @@
 import {Component, OnInit, Output} from '@angular/core';
+import { CommonModule } from '@angular/common';  
 import {SpotifyService} from '../spotify.service';
 import {Observable} from 'rxjs';
 
@@ -15,7 +16,12 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.spotify.sharedConnected.subscribe(connected => this.connected = connected);
+    if(sessionStorage['token'] == undefined){
+      this.connected = false;
+    }
+    else{
+      this.connected = true
+    }
   }
 
 

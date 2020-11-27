@@ -9,7 +9,7 @@ const authorizeOptions = {
     .set('client_id', '0a405b349c54473d9511630f1faf4c56')
     .set('response_type', 'code')
     .set('redirect_uri', 'http://localhost:4200/callback/')
-    .set('scopes', 'user-top-read')
+    .set('scopes', 'user-read-private user-top-read user-read-email')
 };
 
 const tokenOptions = {
@@ -34,8 +34,6 @@ const topArtistOptions = {
 })
 export class SpotifyService {
   constructor(private http: HttpClient) {}
-  private connected = new BehaviorSubject<boolean>(false);
-  sharedConnected = this.connected.asObservable();
 
   getAuthUrl(): string{
     return authorizeOptions.url + '\?' + authorizeOptions.params.toString();
@@ -50,9 +48,6 @@ export class SpotifyService {
     console.log(token);
     topArtistOptions.headers.Authorization = 'Bearer ' + token;
     return this.http.get(topArtistOptions.url, {headers: topArtistOptions.headers, responseType: 'json'});
-  }
-  setConnected(connected: boolean): void{
-    this.connected.next(connected);
   }
 }
 

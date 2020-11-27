@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {SpotifyService} from '../spotify.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,11 +7,16 @@ import {SpotifyService} from '../spotify.service';
 })
 export class MenuComponent implements OnInit {
   connected = false;
-  constructor(private spotify: SpotifyService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.spotify.sharedConnected.subscribe(connected => this.connected = connected);
+    if(sessionStorage['token'] == undefined){
+      this.connected = false;
+    }
+    else{
+      this.connected = true
+    }
   }
 
 }

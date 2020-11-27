@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SpotifyService} from '../spotify.service';
+
 
 @Component({
   selector: 'app-artist-top',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artist-top.component.scss']
 })
 export class ArtistTopComponent implements OnInit {
+  data;
 
-  constructor() { }
+  constructor(private spotify: SpotifyService) {
+    this.data = spotify.getTopArtist(sessionStorage['token']);
+  }
 
   artist = {
     name: "John Doe",
@@ -15,7 +20,7 @@ export class ArtistTopComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    console.log(this.data.subscribe())
   }
 
 }
